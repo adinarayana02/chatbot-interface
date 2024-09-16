@@ -82,14 +82,14 @@ const LanguageSelector = () => {
         </div>
       </motion.header>
 
-      <motion.h1
+      <motion.h2
         className="text-3xl font-bold text-primary mb-6 text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         CHOOSE YOUR LANGUAGE
-      </motion.h1>
+      </motion.h2>
 
       {/* Language Buttons List */}
       <motion.div
