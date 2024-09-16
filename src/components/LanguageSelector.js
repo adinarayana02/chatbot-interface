@@ -74,13 +74,13 @@ const LanguageSelector = () => {
           <img
             src={PuenteRomanoLogo}
             alt="Puente Romano Beach Resort Logo"
-            className="w-16 h-auto sm:w-24 md:w-28 lg:w-32 xl:w-36"
+            className="w-16 h-auto sm:w-24 md:w-28 lg:w-32 xl:w-36" // Responsive sizes for different platforms
           />
         </motion.div>
       </motion.header>
 
       <motion.h1
-        className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-6 text-center"
+        className="text-3xl font-bold text-primary mb-6 text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -91,16 +91,16 @@ const LanguageSelector = () => {
       {/* Language Buttons List */}
       <motion.div
         className="mt-4 space-y-3 w-full max-w-md mb-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        initial={{ opacity: 0, x: '-100%' }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
       >
         {Object.entries(logos).map(([language, logoUrl], index) => (
           <motion.div
             key={language}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }} 
+            initial={{ opacity: 0, x: index % 2 === 0 ? '-100%' : '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: index * 0.1, ease: 'easeOut' }} 
           >
             <motion.button
               className={getButtonStyles(index, language)}
@@ -109,13 +109,7 @@ const LanguageSelector = () => {
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              <motion.img
-                src={logoUrl}
-                alt={`${language} flag`}
-                className="w-8 h-8"
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-              />
+              <img src={logoUrl} alt={`${language} flag`} className="w-8 h-8" />
               <span className={`text-lg font-semibold ${getTextStyles(language)}`}>
                 {language}
               </span>
@@ -143,12 +137,10 @@ const LanguageSelector = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
       >
-        <motion.img
+        <img
           src={AlssystTouristLogo}
           alt="Alssyst Tourist Logo"
           className="w-5 h-5 mr-2"
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.3 }}
         />
         <span className="text-muted-foreground text-xs">Powered by Alssyst</span>
       </motion.div>
