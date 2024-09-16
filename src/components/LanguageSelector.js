@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PuenteRomanoLogo from '../assets/images/Puente_Romano_Beach_Resort_Logo.jpeg';
@@ -34,6 +34,7 @@ const logos = {
 
 const LanguageSelector = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('');
+  const [hasLoaded, setHasLoaded] = useState(false);
   const navigate = useNavigate();
 
   // Function to handle the continue button click
@@ -51,6 +52,12 @@ const LanguageSelector = () => {
   const getTextStyles = (language) => {
     return selectedLanguage === language ? selectedTextStyles : defaultTextStyles;
   };
+
+  // Handle load complete
+  useEffect(() => {
+    const timer = setTimeout(() => setHasLoaded(true), 500); // Delay for the slide-in effect
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <motion.div
@@ -91,16 +98,16 @@ const LanguageSelector = () => {
       {/* Language Buttons List */}
       <motion.div
         className="mt-4 space-y-3 w-full max-w-md mb-6"
-        initial={{ opacity: 0, x: '-100%' }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
         {Object.entries(logos).map(([language, logoUrl], index) => (
           <motion.div
             key={language}
-            initial={{ opacity: 0, x: index % 2 === 0 ? '-100%' : '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.1, ease: 'easeOut' }} 
+            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+            animate={{ opacity: 1, x: hasLoaded ? 0 : (index % 2 === 0 ? -50 : 50) }}
+            transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
           >
             <motion.button
               className={getButtonStyles(index, language)}
