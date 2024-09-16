@@ -105,7 +105,7 @@ const LanguageSelector = () => {
             <motion.button
               className={getButtonStyles(index, language)}
               onClick={() => setSelectedLanguage(language)}
-              whileHover={{ scale: 1.1, boxShadow: "0px 15px 30px rgba(0,0,0,0.2)" }}
+              whileHover={{ scale: 1.05, boxShadow: "0px 15px 30px rgba(0,0,0,0.2)" }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
