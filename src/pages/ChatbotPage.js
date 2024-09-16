@@ -31,22 +31,18 @@ const ChatbotPage = () => {
     >
       {/* Header Section */}
       <motion.header
-        className="bg-orange-500 text-white p-3 shadow-md w-full max-w-6xl mx-auto m-0 rounded-lg"
+        className="rounded-lg bg-orange-500 text-white p-4 shadow-xl w-full mb-6 max-w-6xl mx-auto"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <motion.div
-          className="flex justify-center"
-          animate={{ rotate: [0, 5, -5, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-        >
+        <div className="flex justify-center">
           <img
             src={PuenteRomanoLogo}
             alt="Puente Romano Beach Resort Logo"
             className="w-16 h-auto sm:w-24 md:w-28 lg:w-32 xl:w-36" // Responsive sizes for different platforms
           />
-        </motion.div>
+        </div>
       </motion.header>
 
       {/* Back Arrow Button */}
