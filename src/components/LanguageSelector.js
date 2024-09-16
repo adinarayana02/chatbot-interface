@@ -55,7 +55,7 @@ const LanguageSelector = () => {
 
   // Handle load complete
   useEffect(() => {
-    const timer = setTimeout(() => setHasLoaded(true), 500); // Delay for the slide-in effect
+    const timer = setTimeout(() => setHasLoaded(true), 300); // Faster slide-in effect
     return () => clearTimeout(timer);
   }, []);
 
@@ -73,17 +73,13 @@ const LanguageSelector = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <motion.div
-          className="flex justify-center"
-          animate={{ rotate: [0, 5, -5, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-        >
+        <div className="flex justify-center">
           <img
             src={PuenteRomanoLogo}
             alt="Puente Romano Beach Resort Logo"
             className="w-16 h-auto sm:w-24 md:w-28 lg:w-32 xl:w-36" // Responsive sizes for different platforms
           />
-        </motion.div>
+        </div>
       </motion.header>
 
       <motion.h1
@@ -107,7 +103,7 @@ const LanguageSelector = () => {
             key={language}
             initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
             animate={{ opacity: 1, x: hasLoaded ? 0 : (index % 2 === 0 ? -50 : 50) }}
-            transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+            transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }} // Faster slide-in effect
           >
             <motion.button
               className={getButtonStyles(index, language)}
