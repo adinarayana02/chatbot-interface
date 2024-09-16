@@ -55,7 +55,7 @@ const LanguageSelector = () => {
 
   // Handle load complete
   useEffect(() => {
-    const timer = setTimeout(() => setHasLoaded(true), 300); // Faster slide-in effect
+    const timer = setTimeout(() => setHasLoaded(true), 200); // Faster slide-in effect
     return () => clearTimeout(timer);
   }, []);
 
@@ -103,7 +103,7 @@ const LanguageSelector = () => {
             key={language}
             initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
             animate={{ opacity: 1, x: hasLoaded ? 0 : (index % 2 === 0 ? -50 : 50) }}
-            transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }} // Faster slide-in effect
+            transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }} // Faster slide-in effect
           >
             <motion.button
               className={getButtonStyles(index, language)}
